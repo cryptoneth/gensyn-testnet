@@ -7,7 +7,6 @@ YELLOW="\e[33m"
 NC="\e[0m"
 
 SWARM_DIR="$HOME/rl-swarm"
-TEMP_DATA_PATH="$SWARM_DIR/modal-login/temp-data"
 HOME_DIR="$HOME"
 
 cd $HOME
@@ -23,8 +22,6 @@ if [ -f "$SWARM_DIR/swarm.pem" ]; then
         if [ "$choice" == "1" ]; then
             echo -e "\n${BOLD}${YELLOW}[✓] Using existing swarm.pem...${NC}"
             mv "$SWARM_DIR/swarm.pem" "$HOME_DIR/"
-            mv "$TEMP_DATA_PATH/userData.json" "$HOME_DIR/" 2>/dev/null
-            mv "$TEMP_DATA_PATH/userApiKey.json" "$HOME_DIR/" 2>/dev/null
 
             rm -rf "$SWARM_DIR"
 
@@ -32,8 +29,6 @@ if [ -f "$SWARM_DIR/swarm.pem" ]; then
             cd $HOME && git clone https://github.com/zunxbt/rl-swarm.git > /dev/null 2>&1
 
             mv "$HOME_DIR/swarm.pem" rl-swarm/
-            mv "$HOME_DIR/userData.json" rl-swarm/modal-login/temp-data/ 2>/dev/null
-            mv "$HOME_DIR/userApiKey.json" rl-swarm/modal-login/temp-data/ 2>/dev/null
             break
         elif [ "$choice" == "2" ]; then
             echo -e "${BOLD}${YELLOW}[✓] Removing existing folder and starting fresh...${NC}"
